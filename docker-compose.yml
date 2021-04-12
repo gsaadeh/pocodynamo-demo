@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    container_name: pocodynamodemo.dynamodb
+    entrypoint: java
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - demo
+        
+networks:
+  demo:
+    name: demo
+    driver: bridge
